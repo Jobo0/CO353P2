@@ -1,0 +1,1 @@
+find inputs/ -name "*.in" | xargs -I {} sh -c 'echo "Running {}..."; python exist_arb.py < {}; echo "----------------------"'

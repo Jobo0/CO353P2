@@ -19,7 +19,7 @@ class Graph:
         stack.append(v)
     
     def transpose(self):
-        # reversed edges - for Josaraju SCC find
+        # reversed edges - for Kosaraju SCC find
         transposed_graph = Graph(self.vertices, self.edge_count)
         for node in self.edges:
             for neighbor in self.edges[node]:
