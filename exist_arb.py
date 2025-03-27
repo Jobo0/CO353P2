@@ -57,7 +57,7 @@ class Graph:
         return sccs
     
     def arb_exist(self):
-        if not (self.vertices > self.edge_count - 1): 
+        if not (self.edge_count >= self.vertices - 1): 
             return False # graph cannot be connected
 
         sccs = self.find_sccs() # O(n + m) = O(m)
