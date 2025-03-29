@@ -1,13 +1,15 @@
 from collections import defaultdict
 # Main Script - Fetch Inputs, do outputs from here. Run directly. 
 
-def greedy_max_cut(adj_list):
+def greedy_max_cut(adj_list, n):
     # Greedily select node who will most increase cut size
     # Value indicates how much cut will increase by addition
     # Initialized as node degree
     node_values = {u: len(adj_list[u]) for u in adj_list}
 
     S = set()
+
+    num_edges = 0
 
     while True:
         # get node with highest value
@@ -21,6 +23,10 @@ def greedy_max_cut(adj_list):
 
         for v in adj_list[u]:
             node_values[v] -= 1
+        
+        num_edges += 1
+        if (num_edges >= n/2):
+            break
         
     return S
 
@@ -36,7 +42,7 @@ def main():
         edgeAdjList[u].append(v)
         edgeAdjList[v].append(u)
 
-    greedy_cut = greedy_max_cut(edgeAdjList)
+    greedy_cut = greedy_max_cut(edgeAdjList, n)
     print(len(greedy_cut))
     print(*greedy_cut)
 
